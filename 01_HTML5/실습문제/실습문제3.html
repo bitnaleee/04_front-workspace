@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        caption {
+            color:red
+        }
+        th {
+            background-color:pink;
+            color:white
+        }
+        td{
+            background-color:yellow;
+            text-align:center
+        }
+        button {
+            background-color:lightblue;
+            color:white
+        }
+        #r {
+            background-color:red;
+            color:blue
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+       <caption><h2>강의목록</h2></caption>
+        <tr>
+            <th>관</th>
+            <th>강의장</th>
+            <th>인원수</th>
+            <th colspan="2">강의명</th>
+        </tr>
+        <tr>
+            <td rowspan="6">1관</td>
+            <td rowspan="2">9 강의장</td>
+            <td rowspan="2">30명</td>
+            <td>오전 : 강보람</td>
+            <td><button>신청하기</button></td>
+        </tr>
+        <tr>
+            <td>오후 : 강보람</td>
+            <td><button>신청하기</button></td>
+        </tr>
+        <tr>
+            <td rowspan="2">10 강의장</td>
+            <td rowspan="2">23명</td>
+            <td>오전 : 홍길동</td>
+            <td><button>신청하기</button></td>
+        </tr>
+        <tr>
+            <td>오후 : 홍길동</td>
+            <td><button>신청하기</button></td> 
+        </tr>
+        <tr>
+            <td rowspan="2">11 강의장</td>
+            <td rowspan="2">27명</td>
+            <td>오전 : 김말순</td>
+            <td><button>신청하기</button></td>
+        </tr>
+        <tr>
+            <td>오후 : 김말순</td>
+            <td><button>신청하기</button></td>
+        </tr>
+        <tr>
+            <th colspan="5" id="r">많이 신청해주세요!</th>
+        </tr>
+
+
+
+
+
+
+
+    </table>
+
+</body>
+</html>
