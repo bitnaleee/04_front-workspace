@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 관련 스타일</title>
+    <style>
+        #div-bg {
+            background-color:white;
+            border:30px solid rgb(255, 205, 205);
+            padding:20px;
+            width:50%;
+            box-sizing:content-box;
+        }
+
+        .div-test {
+            background:white;
+            margin:30px;
+            border:10px dashed black;
+            padding:20px;
+        }
+
+        #div1 {background-clip:border-box; /*배경색깔이 테두리까지 색칠 dash로 해서 더 잘 보임*/}
+
+        #div2 {background-clip:padding-box; /*배경색깔이 패딩까지만*/}
+
+        #div3 {background-clip:content-box; /*내용에만 적용*/} 
+
+        #bg-img {
+            border:1px solid black;
+            width:70%;
+            height:800px;
+
+            background-image:url('resources/image/bgsample.jpg');
+            background-repeat:repeat; /*요소에 가득 찰 때까지 가로/세로 반복*/
+            background-repeat:repeat-x;
+            background-repeat:repeat-y;
+            background-repeat:no-repeat;
+
+            background-size:auto;
+            background-size:contain;
+            background-size:cover;
+            background-size:150px 100px;
+            background-size:80% 40%;
+
+            background-position:right top;
+            background-position:center center;
+            background-position:30px 50px;
+            background-position:30% 70%;
+
+            background-attachment:scroll;
+            background-attachment:fixed;
+
+        }
+    </style>
+
+</head>
+<body style="background-color:rgb(242, 249, 180);">
+    <h1>배경 관련 스타일 (background~)</h1>
+
+    <h3>background-color : 배경색 지정하고자 할 때 사용</h3>
+
+    <div id="div-bg">
+        어머니, 라이너 오면 잠, 거외다. 별 하나에 릴케 라이너 당신은 하나의 겨울이 다하지 언덕 계십니다. 별을 써 이 별 별들을 까닭이요, 남은 계십니다. 이국 어머니, 자랑처럼 않은 밤을 봅니다. 별 불러 벌써 그러나 지나고 이름자를 위에도 있습니다. 봄이 시인의 쓸쓸함과 이름과, 거외다. 하나에 멀리 걱정도 내린 겨울이 이네들은 새겨지는 있습니다. 많은 말 아름다운 멀리 아스라히 옥 토끼, 책상을 봅니다. 하늘에는 시인의 가난한 거외다. 이름과, 지나고 이름자를 별들을 있습니다. 자랑처럼 쓸쓸함과 벌써 계절이 별이 이름을 이웃 계십니다.
+    </div>
+
+    <hr>
+
+    <h3>background-clip : 배경을 적용시키고자 하는 범위를 지정할 때 사용</h3>
+    <pre>
+    선택자 {
+        backgroud-clip : border-box(기본값)|padding-box|content-box;
+    }
+    </pre>
+    
+    <div class="div-test" id="div1">별에도 못 이름을 차 말 아이들의 나의 있습니다. 별 벌레는 나의 이름자 둘 이름자를 시와 위에 버리었습니다. 때 토끼, 별 아무 다하지 내 이름과, 까닭입니다. 속의 덮어 부끄러운 강아지, 하나에 패, 남은 별 까닭입니다. 오는 나는 별 하나에 어머니, 밤을 까닭이요, 이 책상을 계십니다.</div>
+    <div class="div-test" id="div2">별에도 못 이름을 차 말 아이들의 나의 있습니다. 별 벌레는 나의 이름자 둘 이름자를 시와 위에 버리었습니다. 때 토끼, 별 아무 다하지 내 이름과, 까닭입니다. 속의 덮어 부끄러운 강아지, 하나에 패, 남은 별 까닭입니다. 오는 나는 별 하나에 어머니, 밤을 까닭이요, 이 책상을 계십니다.</div>
+    <div class="div-test" id="div3">별에도 못 이름을 차 말 아이들의 나의 있습니다. 별 벌레는 나의 이름자 둘 이름자를 시와 위에 버리었습니다. 때 토끼, 별 아무 다하지 내 이름과, 까닭입니다. 속의 덮어 부끄러운 강아지, 하나에 패, 남은 별 까닭입니다. 오는 나는 별 하나에 어머니, 밤을 까닭이요, 이 책상을 계십니다.</div>
+
+    <hr>
+
+    <h3>배경 이미지 테스트</h3>
+    <pre>
+    선택자 {
+        background-image:url('이미지 경로');
+        background-repeat:repeat|repeat-x|repeat-y|no-repeat;
+        background-size:auto|contain|cover|px px|% %;
+        background-position:좌/우/가운데 위/아래/가운데|px px|% %;
+        background-attachment:scroll|fixed;
+    }
+    </pre>
+
+    <div id="bg-img"></div>
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>
