@@ -5,7 +5,7 @@ h2 {color:red}
 
 /* div요소들 중 name속성값이 name1과 "일치"하는 요소 */
 div[name=name1]{
-    background:orangered
+    background:orangered;
 }
 /* div요소들 중 name속성값에 name1이 "포함"되어있는 요소 (한 단어로써 써야됨) */
 div[name~=name1]{
@@ -26,7 +26,7 @@ div[class$=ss]{
 /* div요소들 중 class속성값에 i가 "포함"되어있는 요소 */
 div[class*=i]{
     background:yellow;
-    color:red
+    color:red;
 }
 /* 응용 */
 .div-class[name~=name3]{
