@@ -50,7 +50,8 @@
         #order {
             background-color:rgb(249, 70, 39);
             color:white;
-            margin:7px;
+            width:100px;
+            height:30px;
             border-radius:5px;
             border:none;
         }
@@ -86,10 +87,10 @@
 
             <tr>
                 <th>제목</th>
-                <td><input type="text" name="title" size="30" placeholder="제목을 입력하시오."></td></tr>
+                <td><input type="text" name="title" size="30" placeholder="제목을 입력하시오." required></td></tr>
             <tr>
                 <th>내용</th>
-                <td><textarea name="content" id="content" cols="32" rows="12" style="resize:none" placeholder="내용을 입력하시오."></textarea></td>
+                <td><textarea name="content" id="content" cols="32" rows="12" style="resize:none" placeholder="내용을 입력하시오." required></textarea></td>
             </tr>
             <tr>
                 <th>첨부파일</th>
@@ -173,7 +174,7 @@
 <h1>평가문제2. 피자주문하기 폼을 작성하시오.</h1>
 <div>
     <div id="round">
-    <form action="order.do" method="get" id="form2"></form>
+    <form action="order.do" method="get" id="form2">
         <fieldset id="information">
             <legend><b>고객정보</b></legend>
 
