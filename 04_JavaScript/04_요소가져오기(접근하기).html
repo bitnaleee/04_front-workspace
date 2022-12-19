@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>요소가져오기(접근하기)</title>
+    <title>요소 가져오기(접근하기)</title>
     <style>
         .area{
             border:1px solid black;
@@ -16,189 +16,191 @@
 </head>
 <body>
 
-    <h1>자바스크립트 코드로 데이터 입/출력</h1>
+    <h1>HTML요소에 접근하기(해당 요소객체 가져오기)</h1>
 
-    <!-- 
-        * 자바스크립트 내장 객체
-        - window : 브라우저 창이 열릴때마다 하나씩 만들어지는 객체
-                   브라우저 창 안에 존재하는 모든 요소들의 최상위 객체
-
-        - document : 웹 문서마다 하나씩 존재하는 객체 
-    -->
-
-    <h2>1. 데이터 출력하는 구문</h2>
-    <p>
-        1) [window.]alert("브라우저의 알람창에 출력할 문구"); <br>
-        2) [window.]console.log("브라우저의 콘솔창에 출력할 문구"); <br>
-        3) document.write("화면상에 출력할 문구"); <br>
-        4) 선택한요소.innerHTML|innerText = "요소에 출력할 문구";
-    </p>
-
-    <h3>3) document.write("화면상에 출력할 문구");</h3>
-    <button onclick="documentWrite();">화면에출력</button>
+    <h3>1) 아이디를 이용해서 요소 가져오기</h3>
+    <div id="area1" class="area"></div>
+    <button onclick="accessId();">아이디로 접근</button>
 
     <script>
-        function documentWrite(){
-            //document.write("안녕하세요");
-            //document.write("<b>안녕하세요</b>");
-            // 출력할 문구에 html태그가 있을경우 해석해서 시각적인 요소로 보여짐
-        
-            let a = "<table border='1'>";
-                a += "<tr>";
-                a +=  "<td>1</td>";
-                a +=  "<td>2</td>";
-                a += "</tr>";
-               a += "</table>";
-            
-            console.log(a);
-            document.write(a);
+        function accessId(){
+            // 아이디로 요소 가져올때
+            // document.getElementById("아이디명") => 선택된 요소객체 반환
+            const area1 = document.getElementById("area1");
+
+            // 선택한 요소의 속성값 가져온다거나 변경 가능
+            area1.innerHTML += "아이디로 접근 성공! <br>";
+
+            area1.style.backgroundColor = "pink";
+            area1.style.color = "black";
+            area1.style.width = "200px";
+            area1.style.height = "200px";
+
         }
     </script>
 
     <br><br>
 
-    <h3>4) 선택한요소.innerHTML|innerText = "해당 요소에 출력할 문구";</h3>
-    <div class="area" id="area1">
-        자바스크립트에서 특정 요소(element)안의 값(content)을 가지고 온다거나 <br>
-        변경하고자 할 때 <b>innerHTML, innerText</b> 라는 속성에 접근하면 됨
-    </div>
-    <button onclick="tagValue();">확인</button>
+    <div id="area2" class="area" style="background:rgb(245, 193, 203)"></div>
+    <button onclick="changeColor();">클릭</button>
 
     <script>
-        function tagValue(){
-            // 아이디가 area1인 div요소가져와서 안에 값을 확인/변경
-            const divEl = document.getElementById("area1"); // div 요소객체
+        function changeColor(){
+            const area2 = document.getElementById("area2");
 
-            console.log(divEl);
-            console.dir(divEl); // console.dir : 요소객체의 디렉토리 구조(속성들에 대한 정보)를 볼때
+            if(area2.style.backgroundColor == "rgb(245, 193, 203)"){
+                area2.style.backgroundColor = "rgb(242, 117, 142)";
+            }else{
+                area2.style.backgroundColor = "rgb(242, 38, 79)";
+            }
+        }
+    </script>
 
-            // 선택된 요소의 속성에 . 으로 접근가능
-            console.log(divEl.className); // className : 해당 요소의 클래스속성
-            console.log(divEl.id); // id : 해당 요소의 아이디 속성
+    <hr>
 
-            // innerHTML, innerText : 요소의 content영역의 속성
-            console.log(divEl.innerHTML); // html태그도 같이 보관
-            console.log(divEl.innerText); // 오로지 텍스트만 보관 (html태그)
+    <h3>2) 태그명을 이용해서 요소 가져오기</h3>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <button onclick="accessTagName();">태그명으로 접근</button>
+    
+    <script>
+        function accessTagName(){
+            // 태그를 이용해서 요소 가져올때
+            // document.getElementsByTagName("태그명") => 선택된 요소객체들이 배열에 담겨서 반환
+            const list = document.getElementsByTagName("li"); // [li요소객체, li요소객체, li요소객체, ...]
 
-            // 해당 요소의 속성에 접근해서 값을 대입하면 속성값 변경도 가능
-            //divEl.className = "test";
+            console.log(list, typeof(list));
+            console.log("배열의 크기(선택된 li요소 갯수) :", list.length);
+            console.log(list[0]);
 
-            //divEl.innerHTML = "<b>innerHTML로 속성값 변경함ㅎㅎ</b>";
-            divEl.innerText = "<b>innerText로 속성값 변경함ㅎㅎ</b>";
+            // list.innerHTML = "안녕하세요"; // 제대로 안됨 (배열에 innerHTML속성 없음)
+            list[0].innerHTML = "안녕하세요"; // 인덱스까지 접근해서 요소객체에서 실행해야됨
 
-            // 속성에 속성으로 타고 들어갈 수도 있음
-            divEl.style.backgroundColor = "yellow";
-            divEl.style.width = "200px";
-            divEl.style.height = "200px";
+            let pinkColor = 50;
+            for(let i=0; i<list.length; i++){
+                list[i].innerHTML = "안녕하세요";
+                list[i].style.backgroundColor = "rgb(245, 190, " + pinkColor + ")";
+                pinkColor += 50;
+            }
 
         }
     </script>
 
     <hr>
 
-    <h2>2. 데이터 입력받는 구문 (변수에 기록 가능)</h2>
-    <p>
-        1) 변수 = [window.]confirm("질문내용"); <br>
-        2) 변수 = [window.]prompt("질문내용"); <br>
-        3) 변수 = 선택한요소.속성(id, className, innerHTML, innerText, ...); <br>
-        4) 변수 = 선택한input요소.value;
-    </p>
+    <h3>3) name속성값을 이용해서 요소 가져오기</h3>
+    <form action="test.do">
+        <fieldset>
+            <legend>취미</legend>
 
-    <h3>1) [window.]confirm("질문내용");</h3>
-    <p>
-        confirm 호출시 "질문내용"과 "확인"/"취소"버튼이 존재하는 브라우저의 알람창 발생 <br>
-        확인 버튼 클릭시 true, 취소 버튼 클릭시 false를 반환 
-    </p>
+            <input type="checkbox" name="hobby" value="game" id="game">
+            <label for="game">게임</label>
 
-    <button onclick="testConfirm();">클릭</button>
-    <div id="area2"></div>
+            <input type="checkbox" name="hobby" value="movie" id="movie">
+            <label for="movie">영화</label>
+
+            <input type="checkbox" name="hobby" value="reading" id="reading">
+            <label for="reading">독서</label>
+
+            <input type="checkbox" name="hobby" value="sport" id="sport">
+            <label for="sport">운동</label>
+
+        </fieldset>
+    </form>
+
+    <br>
+
+    <div id="area3" class="area"></div>
+    <button onclick="accessName();">name으로 접근</button>
 
     <script>
-        function testConfirm(){
-            let result = confirm("졸리신가요?");
-            //console.log(result);
+        function accessName(){
+            // name속성값으로 요소 가져올때 
+            // document.getElementsByName("name속성값") => 선택된 요소들이 담겨있는 배열 반환
+            const hobby = document.getElementsByName("hobby"); // [input요소객체, input요소객체, ..]
 
-            const divEl = document.getElementById("area2");
+            const area3 = document.getElementById("area3");
+            area3.innerHTML = "";
 
-            if(result){ // 졸림
-                divEl.innerHTML = "<h3>정신차리세요!!</h3>";
-            }else{ // 안졸림
-                divEl.innerHTML = "<h3>아주 잘하고있습니다!</h3>";
+            for(let i=0; i<hobby.length; i++){
+                //console.log(hobby[i].checked);
+                if(hobby[i].checked){
+                    area3.innerHTML += hobby[i].value + "<br>";
+                }
+                
+            }
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>4) 클래스를 이용해서 요소 가져오기</h3>
+    <div class="test"></div>
+    <p class="test"></p>
+    <ul class="test">
+        <li></li>
+        <li></li>
+    </ul>
+    <pre class="test test1"></pre>
+    <button onclick="accessClass();">class로 접근</button>
+
+    <script>
+        function accessClass(){
+            // class속성으로 요소 가져올때
+            // document.getElementsByClassName("class속성값") => 배열
+            const arr = document.getElementsByClassName("test"); // [div, p, ul, pre]
+
+            for(let i=0; i<arr.length; i++){
+                console.log(arr[i]);
             }
         }
     </script>
-    <br>
-    
-    <h3>2) [window.]prompt("질문내용");</h3>
-    <p>
-        prompt호출시 "질문내용"과 입력할 수 있는 "텍스트 상자"와
-        "확인"/"취소" 버튼이 보여지는 브라우저의 알람창 발생 <br>
-        확인 버튼 클릭시 텍스트 상자에 입력되어있는 값을 문자열로 반환,
-        취소 버튼 클릭시 null을 반환
-    </p>
-    <button onclick="testPrompt1();">클릭</button>
-    <div id="area3"></div>
+
+    <hr>
+
+    <h3>5) 선택자를 활용해서 요소 가져오기 (내가 원하는 요소 자유롭게 선택)</h3>
+
+    <div id="test1">테스트입니다.</div>
+    <div class="test">
+        <h2>안녕</h2>
+        <h2>잘가</h2>
+        <span>ㅎㅎㅎ</span>
+    </div>
+    <span>ㅋㅋㅋ</span>
+    <h2>빠이</h2>
+
+    <button onclick="accessSelector();">선택자로 접근</button>
 
     <script>
-        function testPrompt1(){
-            let name = prompt("당신의 이름은 무엇입니까?");
-            let age = prompt("당신의 나이는 몇살입니까?");
+        function accessSelector(){
+            // 선택자를 이용해서 요소를 가져오고자 할 때 
+            // document.querySelector("선택자") => 선택된 요소객체 딱 하나만 반환 
+            // document.querySelectorAll("선택자") => 선택된 요소객체들이 담겨있는 배열 반환
+            const divEl = document.querySelector("#test1"); // div요소객체
+            const h2El = document.querySelectorAll(".test>h2"); // [h2요소객체, h2요소객체]
+            const spanEl = document.querySelector(".test+span"); // span요소객체
 
-            const divEl = document.getElementById("area3");
-            divEl.innerHTML = "<b>" + age + "살 " + name + "님 환영합니다~^^</b>";
-        }
-    </script>
-
-    <br>
-
-    <button onclick="testPrompt2();">숫자입력</button>
-    <div id="area4"></div>
-
-    <script>
-        function testPrompt2(){
-            let num = prompt("숫자만을 입력하시오.");
-            console.log(num, typeof(num));
-
-            let str = "<ul>";
-            for(let i=1; i<=num; i++){
-                str += "<li>목록" + i + "</li>";
+            console.log(divEl.innerHTML);
+            for(let i=0; i<h2El.length; i++){
+                console.log(h2El[i].innerHTML);
             }
-            str += "</ul>";
+            console.log(spanEl.innerHTML);
 
-            //const divEl = document.getElementById("area4");
-            //divEl.innerHTML = str;
-
-            document.getElementById("area4").innerHTML = str; // 위의 2줄을 한줄로
         }
     </script>
 
-    <br>
 
-    <h3>4) 선택한input요소.value</h3>
-    아이디 : <input type="text" id="userId"> <br>
-    비밀번호 : <input type="password" id="userPwd"> <br>
-
-    <button onclick="testInput();">클릭</button>
-    <br>
-    <div id="area5"></div>
-
-    <script>
-        function testInput(){
-            const input1 = document.getElementById("userId"); // 아이디input요소객체
-            const input2 = document.getElementById("userPwd"); // 비번 input요소객체
-
-            //console.dir(input1);
-
-            let id = input1.value;
-            let pwd = input2.value;
-
-            document.getElementById("area5").innerHTML = id + ", " + pwd;
-            input1.value = "";
-            input2.value = "";
-        }
-    </script>
-
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
 </body>
 </html>
