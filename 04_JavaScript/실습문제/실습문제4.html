@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제4</title>
+    <style>
+        div {
+            border:1px solid red;
+            /* width:auto; */
+            height:150px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>기본 문법 문제</h1>
+    문제1. 다음 보기에 있는 텍스트 필드에 작성한 문자열의 길이를 알아올 수 있도록 구현하시오
+    
+    <fieldset>
+        <legend>보기</legend>
+        <input type="text" id="text" size="100" placeholder="글자를 작성해보세요">
+    </fieldset>
+
+    <br>
+
+    <div id="area1"></div>
+    <button onclick="findLength();">확인하기</button>
+    <br><br>
+
+    <script>
+        function findLength() {
+            const area1 = document.getElementById("area1");  
+            let str = document.getElementById("text").value;
+
+            area1.innerHTML += "보기의 문자열 길이는 " + str.length + "글자 입니다. <br>";
+            //document.getElementById("area1").innerHTML = 이라고 해도 됨  
+
+        }
+    </script>
+
+    문제2. 다음 보기에 있는 문자열을 ,(콤마)를 기준으로 잘라내어 하나하나 출력하시오
+    
+    <fieldset>
+        <legend>보기</legend>
+        <label id="instant">콜라,사이다,햄버거,피자,한약</label>
+
+    </fieldset>
+    <br>
+
+    <div id="area2"></div>
+    <button onclick="splitComma();">확인하기</button>
+
+    <script>
+        function splitComma() {
+            /* 내가 품 모르겠어~
+            const area2 = document.getElementById("area2");
+
+            let str = document.getElementById("instant").value;
+            let instant[] = str2.split(",");
+
+
+            for(let i=0; i<)
+            
+            area2.innerHTML = "<ol>";
+            area2.innerHTML += "<li>" + instant
+            */
+
+            let instant = document.getElementById("instant");
+            const arr = instant.innerHTML.split(",");
+
+            // 한 줄로
+            // const arr = document.getElementById("instant").innerHTML.split(",");
+
+            const area2 = document.getElementById("area2");
+            for(let i=0; i<arr.length; i++) {
+                area2.innerHTML += (i + 1) + ". " + arr[i] + "<br>";
+            }
+
+        }
+    </script>
+
+    
+</body>
+</html>

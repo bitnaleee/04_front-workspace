@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1</title>
+</head>
+<body>
+
+    <h1>행 열 갯수 각각 입력받아 테이블 만들기</h1>
+
+    <button onclick="table();">테이블 생성</button>
+
+    <script>
+        function table() {
+            let row = prompt("테이블 행의 갯수는?");
+            let col = prompt("테이블 열의 갯수는?");
+
+            let count = 1;
+
+            let table = "<table border='1'>"
+            for(let i=0; i<row; i++) {
+                table += "<tr>";
+                for(let j=0; j<col; j++) {
+                    table += "<td width='50' height='50'>" + count++ + "</td>";
+                    } 
+                table += "</tr>";
+            }
+            table += "</table>";
+
+            document.write(table);
+            /*
+                document.write()를 통해서 테이블을 출력하면 기존에 html 문서에 작성된거 날라가고 출력되기 때문에
+                style 태그에 작성된거 출력 되지않음 td요소 자체에 width, height속성으로 작성
+            */
+        }
+    </script>
+
+    
+</body>
+</html>
+
+
