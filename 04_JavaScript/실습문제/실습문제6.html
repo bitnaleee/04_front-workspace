@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html0 lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제6</title>
+</head>
+<body>
+
+    <h1>배열 실습 문제1</h1>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="la1">사과,바나나,당근</label><br>
+        <label id="la2">김밥,치즈,떡볶이,햄버거</label><br>
+        <label id="la3">환타,사이다,콜라</label><br>
+        <label id="la4">고양이,강아지</label><br>
+    </fieldset>
+    <br>
+    <input type="text" id="text" size="100" placeholder="찾을 문자열을 입력하세요">
+    <button onclick="findText();">전송 및 처리</button>
+
+    <script>
+        function findText() {
+        
+            let la1 = document.getElementById("la1").innerHTML.split(",");
+            let la2 = document.getElementById("la2").innerHTML.split(",");
+            let la3 = document.getElementById("la3").innerHTML.split(",");
+            let la4 = document.getElementById("la4").innerHTML.split(",");
+
+            const arr = la1.concat(la2,la3,la4);
+
+            const text = document.getElementById("text").value;
+            const index = arr.indexOf(text);
+
+            if(index >= 0) {
+                alert(text + "는 배열 index " + index + "번째에 존재합니다.");
+            } else {
+                alert("존재하지 않습니다.");
+            }
+        }
+    </script>
+    
+</body>
+</html0>
