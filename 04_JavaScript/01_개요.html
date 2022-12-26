@@ -65,7 +65,7 @@
         [표현법] &lt;태그 on이벤트명="해당요소에 해당이벤트 발생시 실행시킬 소스코드" &gt;
     </p>
     <button onclick="window.alert('알람창 출력 버튼 클릭!!');">알람창 출력</button>
-    <button onclick="console.log('콘솔출력 버튼 클릭!!');">콘솔창 출력</button>
+    <button onclick="console.log('콘솔출력 버튼 클릭!!!');">콘솔창 출력</button>
 
     <br><br>
 
@@ -86,7 +86,7 @@
         // 이벤트를 부여하고자 하는 요소 선택해서 변수에 담아두기
         var btn = document.getElementById("btn");
         // 해당 버튼요소에 마우스 클릭이라는 이벤트 발생시 실행할 함수(이벤트 핸들러) 정의
-        btn.onclick = function(){
+        btn.onclick = function(){   // 이름이 없는 함수
             window.alert("버튼 클릭");
         };
 
