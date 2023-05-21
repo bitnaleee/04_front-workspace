@@ -47,12 +47,13 @@
 
             area1.innerHTML += "substring(시작인덱스) : " + str1.substring(6) + "<br>";
             area1.innerHTML += "substring(시작, 끝) : " + str1.substring(0, 2) + "<br>";
+            // 끝 인덱스는 포함되지않음
 
             let str2 = "사과,바나나,복숭아,키위";
             let fruits = str2.split(","); // ["사과", "바나나", "복숭아", "키위"]
 
             area1.innerHTML += "fruits : " + fruits + "<br>";
-            console.log(fruits, typeof(fruits));
+            console.log(fruits, typeof(fruits)); // 화면상에서는 단순 문자열인지 배열인지 확인
         }
     </script>
 
@@ -123,26 +124,26 @@
             area4.innerHTML += "test7 : " + test7 + "<br>";
             area4.innerHTML += "test8 : " + test8 + "<hr>";
 
-            // 강제형변환 (문자열 => 숫자형)
-            // 1) Number(문자열)
-            // 2) parseInt(문자열)
+            // (덧셈연산시)강제형변환 (문자열 => 숫자형)
+            // 1) Number(문자열) // 문자열이 껴있을 경우 => => NaN
+            // 2) parseInt(문자열) // => 숫자만을 반환 (but 문자가 먼저시작하면 NaN)
             // 3) parseFloat(문자열)
 
             // 2, "3"
             const test9 = 2 + "3"; // "23"
 
-            const test10 = 2 + Number("3");
-            const test11 = 2 + parseInt("3");
-            const test12 = 2 + parseFloat("3");
+            const test10 = 2 + Number("3"); // 5
+            const test11 = 2 + parseInt("3"); // 5
+            const test12 = 2 + parseFloat("3"); // 5
 
             area4.innerHTML += test10 + ", " + test11 + ", " + test12 + "<br>";
 
             // 2, "1.234"
             const test13 = 2 + "1.234"; // "21.234";
 
-            const test14 = 2 + Number("1.234");
-            const test15 = 2 + parseInt("1.234"); // "1.234" => 1
-            const test16 = 2 + parseFloat("1.234"); // "1.234" => 1.234
+            const test14 = 2 + Number("1.234"); // 3.234
+            const test15 = 2 + parseInt("1.234"); // "1.234" => 1 // 3
+            const test16 = 2 + parseFloat("1.234"); // "1.234" => 1.234 // 3.234
 
             area4.innerHTML += test14 + ", " + test15 + ", " + test16;
         }

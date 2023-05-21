@@ -48,7 +48,7 @@
                 a +=  "<td>1</td>";
                 a +=  "<td>2</td>";
                 a += "</tr>";
-               a += "</table>";
+                a += "</table>";
             
             console.log(a);
             document.write(a);
@@ -183,6 +183,11 @@
     <div id="area5"></div>
 
     <script>
+        //const id = document.getElementById("userId").value;
+        //const pwd = document.getElementById("userPwd").value;
+        // 버튼 클릭하고 실행되어야하는데 바로 시작되기 때문에 실행되지않음!
+        // 코드 작성 순서 중요!!!
+
         function testInput(){
             const input1 = document.getElementById("userId"); // 아이디input요소객체
             const input2 = document.getElementById("userPwd"); // 비번 input요소객체
@@ -193,8 +198,8 @@
             let pwd = input2.value;
 
             document.getElementById("area5").innerHTML = id + ", " + pwd;
-            input1.value = "";
-            input2.value = "";
+            input1.value = ""; // 초기화
+            input2.value = ""; // 초기화
         }
     </script>
 

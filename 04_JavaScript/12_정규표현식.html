@@ -89,7 +89,7 @@
             let regExp = /a/; // 메타문자없음
 
             console.log(regExp, regExp.test(str));
-            console.log(regExp, str.replace(regExp, "(***)"));
+            console.log(regExp, str.replace(regExp, "(***)")); // 첫번째 값만을 치환
             console.log("------------------------------");
 
             // 1. ^ : 시작을 의미 
@@ -104,7 +104,7 @@
             console.log("------------------------------");
 
             // 2. [] : []내에 여러문자들을 목록처럼 나열 가능 
-            regExp = /[abc]/;
+            regExp = /[abc]/; // a 또는 b 또는 c
             console.log(regExp, regExp.test(str));
             console.log(regExp, str.replace(regExp, "(***)"));
             console.log("------------------------------");
@@ -196,13 +196,13 @@
             const str = "JavaScript jQuery Ajax";
 
             let regExp = /a/;
-            console.log(regExp, str.replace(regExp, "(***)"));
+            console.log(regExp, str.replace(regExp, "(***)")); // 첫번째값만 치환
 
             regExp = /a/g;
-            console.log(regExp, str.replace(regExp, "(***)"));
+            console.log(regExp, str.replace(regExp, "(***)")); // a는 다 치환
 
             regExp = /a/ig;
-            console.log(regExp, str.replace(regExp, "(***)"));
+            console.log(regExp, str.replace(regExp, "(***)")); // 대소문자 a 다 치환
             */
 
             const str = "JavaScript\nJQuery\nAjax";
@@ -211,7 +211,7 @@
             let regExp = /^J/;
             console.log(str.replace(regExp, "(***)"));
 
-            regExp = /^J/gm;
+            regExp = /^J/gm; // 여러줄은 m
             console.log(str.replace(regExp, "(***)"));
 
         }

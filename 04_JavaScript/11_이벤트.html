@@ -59,7 +59,7 @@
     </p>
 
     <button onclick="document.getElementById('area2').innerHTML += '첫번째 버튼 클릭<br>';">실행확인</button>
-    <button onclick="test1();">실행확인</button>
+    <button onclick="test1();">실행확인</button> <!--함수를 정의해두고 호출해서 쓰는 법-->
 
     <div id="area2" class="area"></div>
 
@@ -89,8 +89,8 @@
         });
 
         btn3.addEventListener("mouseenter", function(){
-            btn3.style.backgroundColor = "red";
-        })
+            btn3.style.backgroundColor = "pink";
+        }) // 마우스 빠져나갔다고 돌아오지않음
 
         btn3.addEventListener("mouseout", function(){
             btn3.style.backgroundColor = null;
@@ -113,13 +113,13 @@
             console.log(window.event); // Event객체
 
             // 현재 이벤트가 발생한 요소객체에 접근하고자 한다면 
-            console.log(e.target);
+            console.log(e.target); // target : 현재 이벤트가 발생한 요소객체를 가지고 있는 속성
             console.log(window.event.target);
             //console.log(document.getElementById("btn4"));
             console.log(this);
 
             e.target.innerHTML = "버튼클릭됨";
-            window.event.target.style.backgroundColor = "red";
+            window.event.target.style.backgroundColor = "pink";
             this.style.color = "white";
 
         }
@@ -137,7 +137,7 @@
             //console.log(e); // undefined == 초기화가 안됨
             //console.log(e.target);
 
-            //console.log(this); // 선언적함수에서의 this == window객체를 가리킴
+            //console.log(this); // 선언적함수에서의 this == window객체를 가리킴 
 
             console.log(window.event.target);
         }
@@ -167,9 +167,9 @@
 
             //console.log(e);
             //console.log(e.key); // 현재 누른 키
-            //console.log(e.keyCode); // 현재 누른 키의 코드
+            //console.log(e.keyCode); // 현재 누른 키의 코드 // 검색시 Enter를 눌렀을때 실행
 
-            console.log(this.value);
+            console.log(this.value); // 유효성체크에도 가능
         }
     </script>
 
@@ -195,7 +195,7 @@
         function test4(){
             if(confirm("페이지 이동하시겠습니까?")){
                 return true;
-            }else{
+            } else{
                 return false;
             }
         }
@@ -204,22 +204,21 @@
     <br><br>
 
     <form action="test.do" method="get">
-        아이디 : <input type="text" name="userId" id="userId" required> <br>
-        비밀번호 : <input type="password" name="userPwd" id="userPwd" required> <br>
+        아이디 : <input type="text" name="userId" id="userId" required> <br><br>
+        비밀번호 : <input type="password" name="userPwd" id="userPwd" required> <br><br>
         비밀번호확인 : <input type="password" id="checkPwd"> <br><br>
-
         <input type="submit" onclick="return validate();">
     </form>
 
     <script>
         function validate(){
-
+            
             // 아이디에 대한 유효성 검사
             // 영문자 또는 숫자로만 5글자 이상 12글자 이하가 맞는지
             const userId = document.getElementById("userId").value;
 
             /*
-            if(userId.length >= 5 && userId.length <= 12){
+            if(userId.length >= 5 && userId.length <= 12){ // 글자수가 맞을 경우
 
                 // 첫글자에서부터 마지막글자까지 영문/숫자로만 이뤄져있는지 체크
                 for(let i=0; i<userId.length; i++){
@@ -238,6 +237,7 @@
                 return false;
             }
             */
+
             // 정규표현식을 이용해서 유효한 아이디형식의 패턴을 만들어둘꺼임
             const regExp = /^[a-zA-Z0-9]{5,12}$/;
             if(!regExp.test(userId)){
@@ -246,9 +246,7 @@
                 return false;
             }
 
-
-
-
+            // 비밀번호 일치
             // 두개의 비밀번호가 일치하지 않을 경우 => return false;
             const userPwd = document.getElementById("userPwd").value;
             const checkPwd = document.querySelector("#checkPwd").value;
@@ -257,7 +255,6 @@
                 alert("비밀번호가 일치하지 않습니다!");
                 return false;
             }
-
 
         }
     </script>

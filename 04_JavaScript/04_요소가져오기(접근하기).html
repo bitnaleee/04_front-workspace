@@ -109,7 +109,6 @@
 
             <input type="checkbox" name="hobby" value="sport" id="sport">
             <label for="sport">운동</label>
-
         </fieldset>
     </form>
 
@@ -122,13 +121,14 @@
         function accessName(){
             // name속성값으로 요소 가져올때 
             // document.getElementsByName("name속성값") => 선택된 요소들이 담겨있는 배열 반환
+            // 1개라도 배열로 반환
             const hobby = document.getElementsByName("hobby"); // [input요소객체, input요소객체, ..]
 
             const area3 = document.getElementById("area3");
-            area3.innerHTML = "";
+            area3.innerHTML = ""; // 초기화
 
             for(let i=0; i<hobby.length; i++){
-                //console.log(hobby[i].checked);
+                //console.log(hobby[i].checked); // boolean 논리값
                 if(hobby[i].checked){
                     area3.innerHTML += hobby[i].value + "<br>";
                 }

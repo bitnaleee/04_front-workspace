@@ -31,7 +31,7 @@
     <div id="area1" class="area"></div>
 
     <script>
-        function test1() {
+        function test1() { // 선언적 함수(이름이 있는 함수)
             document.getElementById("area1").innerHTML += "test1() 함수 실행됨 <br>";
         }
     </script>
@@ -80,11 +80,11 @@
     <button onclick="test2(prompt('이름을 입력해주세요'));">실행확인</button>
 
     <!-- 정의해둔 매개변수 갯수보다 더 많이 전달하는거 가능(오류안남) 단, 초과된 전달값은 무시됨 -->
-    <button onclick="test2('안녕하세요', '반갑습니다');">실행확인</button>
-    <button onclick="test2(10, true, '안녕');">실행확인</button>
+    <button onclick="test2('안녕하세요', '반갑습니다');">실행확인</button> <!--안녕하세요-->
+    <button onclick="test2(10, true, '안녕');">실행확인</button> <!--10-->
 
     <!-- 정의해둔 매개변수 갯수보다 더 적게 전달하는거 가능(오류안남) -->
-    <button onclick="test2();">실행확인</button>
+    <button onclick="test2();">실행확인</button> <!--undefined-->
 
     <div id="area3" class="area"></div>
 

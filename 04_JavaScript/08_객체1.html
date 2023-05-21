@@ -73,7 +73,6 @@
             divEl.innerHTML += "ingredient : " + product.ingredient + "<br>";
             divEl.innerHTML += "ingredient[1] : " + product.ingredient[1];
     
-
         }
     </script>
 
@@ -138,8 +137,9 @@
 
             for(let key in game) { // 변수 = "title" => 변수 = "price" => ... 
                 
-                // .을 이용해서 접근 => 객체명.속성명
+                // .을 이용해서 접근 => 객체명.속성명 
                 //divEl.innerHTML += key + " : " + game.key + "<br>";
+                // // 위 경우 key값을 찾음
 
                 // 대괄호를 이용해서 접근 => 객체명["속성명"]
                 divEl.innerHTML += key + " : " + game[key] + "<br>";
@@ -223,8 +223,8 @@
             divEl.innerHTML += "student : " + student + "<br>";
 
             // "속성명" in 객체명 : 객체에 해당 속성이 있으면 true, 없으면 false 반환
-            divEl.innerHTML += "name속성이 있나 : " + ("name" in student) + "<br>";
-            divEl.innerHTML += "age속성이 있나 : " + ("age" in student) + "<br>";
+            divEl.innerHTML += "name속성이 있나 : " + ("name" in student) + "<br>"; // true
+            divEl.innerHTML += "age속성이 있나 : " + ("age" in student) + "<br>"; // false
 
             with(student) {
                 divEl.innerHTML += "학생이름 : " + name + "<br>";
@@ -254,7 +254,7 @@
                 student.dream = "프로게이머";
                 student.age = 20;
 
-                student.dream = "프로게이머"; // 객체내에 중복된 속성 존재 불가
+                student.dream = "프로게이머"; // 객체내에 중복된 속성 존재 불가 (덮어씌어짐)
 
                 student.toString = function() {
                   const str = "name : " + this.name + "<br>"
