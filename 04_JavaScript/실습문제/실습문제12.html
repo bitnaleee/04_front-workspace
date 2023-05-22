@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제12</title>
+    <style>
+        table {width:450px; position:relative;}
+        table tr { height:70px;}
+        #tableName { position:absolute; left:170px; color:red;}
+        #btn {position:absolute; left:180px;}
+    </style>
+</head>
+<body>
+
+    <h2>객체 실습 문제</h2>
+
+    문제2. <br>
+    다음 입력 버튼 클릭시 학생정보를 3명 저장받아(for문 사용) <br>
+    테이블을 생성하여 출력하는 코드를 작성하세요. <br>
+    단, 학생정보는 객체로 처리하여 저장 후 테이블에 입력하고 <br>
+    모든 학생 정보는 객체 배열에 저장하여 console.log(objectArr)로 출력시 <br>
+    객체 배열 정보가 console.log에 나와야 함 <br>
+
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="age"></td>
+            <td class="addr"></td>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="age"></td>
+            <td class="addr"></td>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="age"></td>
+            <td class="addr"></td>
+        </tr>
+    </table>
+    <div id="tableName">학생정보 테이블</div><br>
+    <button id="btn" onclick="student();">입력 및 출력</button>
+
+    <script>
+
+        function Student(name, age, addr) {
+            this.name = name;
+			this.age = age;
+			this.addr = addr;
+        }
+
+        function student() {
+            let objectArr = []; // 객체 배열 생성
+
+            let names = document.getElementsByClassName("name");
+        	let ages = document.getElementsByClassName("age");
+        	let addrs = document.getElementsByClassName("addr");
+
+            for(let i=0; i<3; i++) {
+                objectArr.push(new Student(prompt((i+1)+ "번째 학생 이름 입력"),
+                                           prompt((i+1)+ "번째 학생 나이 입력"),
+                                           prompt((i+1)+ "번째 학생 주소 입력")));
+            }
+
+            console.log(objectArr);
+
+            for(let i=0; i<3; i++) {
+                with(objectArr[i]){
+					names[i].innerHTML = name;
+					ages[i].innerHTML = age;
+					addrs[i].innerHTML = addr;
+				}
+            }
+
+        }
+    </script>
+
+    
+</body>
+</html>

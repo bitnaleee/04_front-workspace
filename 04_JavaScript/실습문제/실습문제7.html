@@ -5,10 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>실습문제7</title>
+    <style>
+        div {
+            border:1px solid red;
+            height:25px;
+            width:530px;
+        }
+    </style>
 </head>
 <body>
 
     <h2>배열 실습 문제2</h2>
+
+    다음 보기에 있는 문자열을 가지고 정답과 같이 만드세요. (별도의 문자열을 쓰면 안됨)<br>
+    그리고 출력 부분에 출력하도록 하면 됩니다. 정답 : "brlove"<br><br>
+    
+    <fieldset style="width:500px;">
+        <legend>보기</legend>
+        <label id="stringla1">r b</label><br>
+        <label id="stringla2">e v o l</label><br>
+    </fieldset>
+    <br><br>
+    <div id="area"></div>
+    <br>
+    <button onclick="join();">처리</button>
+
+    <script>
+
+        function join() {
+            let text = document.getElementsByTagName("label")[0].innerHTML.split(" ").reverse();
+            let text2 = document.getElementsByTagName("label")[1].innerHTML.split(" ").reverse();
+            
+            let arr = text.concat(text2);
+            
+            for(let i=0; i<arr.length; i++) {
+                document.getElementById("area").innerHTML += arr[i];
+            }
+
+            // 다른 방법
+            // document.getElementById("print").innerHTML = arr.join('');
+        }
+
+    </script>
 
     
 </body>

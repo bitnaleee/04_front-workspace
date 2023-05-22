@@ -8,19 +8,19 @@
     <style>
         div {
             border:1px solid red;
-            /* width:auto; */
+            width:395px;
             height:150px;
         }
     </style>
 </head>
 <body>
 
-    <h1>기본 문법 문제</h1>
-    문제1. 다음 보기에 있는 텍스트 필드에 작성한 문자열의 길이를 알아올 수 있도록 구현하시오
+    <h2>기본 문법 문제</h2>
     
-    <fieldset>
+    문제1. 다음 보기에 있는 텍스트 필드에 작성한 문자열의 길이를 알아올 수 있도록 구현하시오
+    <fieldset style="width:110px;">
         <legend>보기</legend>
-        <input type="text" id="text" size="100" placeholder="글자를 작성해보세요">
+        <input type="text" id="length" placeholder="글자를 작성해보세요" size="50px;">
     </fieldset>
 
     <br>
@@ -29,55 +29,28 @@
     <button onclick="findLength();">확인하기</button>
     <br><br>
 
-    <script>
-        function findLength() {
-            const area1 = document.getElementById("area1");  
-            let str = document.getElementById("text").value;
-
-            area1.innerHTML += "보기의 문자열 길이는 " + str.length + "글자 입니다. <br>";
-            //document.getElementById("area1").innerHTML = 이라고 해도 됨  
-
-        }
-    </script>
-
     문제2. 다음 보기에 있는 문자열을 ,(콤마)를 기준으로 잘라내어 하나하나 출력하시오
-    
-    <fieldset>
+    <fieldset style="width:375px;">
         <legend>보기</legend>
-        <label id="instant">콜라,사이다,햄버거,피자,한약</label>
-
+        <label>콜라,사이다,햄버거,피자,한약</label> 
     </fieldset>
+
     <br>
 
     <div id="area2"></div>
     <button onclick="splitComma();">확인하기</button>
 
     <script>
+        function findLength() {
+            let length = document.getElementById("length").value.length;
+            document.querySelector("#area1").innerHTML = "보기의 문자열 길이는 " + length + "글자입니다.";
+        }
+
         function splitComma() {
-            /* 내가 품 모르겠음~
-            const area2 = document.getElementById("area2");
-
-            let str = document.getElementById("instant").value;
-            let instant[] = str2.split(",");
-
-
-            for(let i=0; i<)
-            
-            area2.innerHTML = "<ol>";
-            area2.innerHTML += "<li>" + instant
-            */
-
-            let instant = document.getElementById("instant");
-            const arr = instant.innerHTML.split(",");
-
-            // 한 줄로
-            // const arr = document.getElementById("instant").innerHTML.split(",");
-
-            const area2 = document.getElementById("area2");
+            let arr = document.getElementsByTagName("label")[0].innerHTML.split(",");
             for(let i=0; i<arr.length; i++) {
-                area2.innerHTML += (i + 1) + ". " + arr[i] + "<br>";
+                document.querySelector("#area2").innerHTML += (i + 1) + ". " + arr[i] + "<br>";
             }
-
         }
     </script>
 

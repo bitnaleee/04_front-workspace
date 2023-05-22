@@ -16,41 +16,32 @@
 </head>
 <body>
 
-    <h1>문제1. 색상 선택 후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h1>
+    <h2>문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h2>
 
     <div id="area1"></div>
-    <input type="color" id="color">
+    <input type="color" name="color" id="color">
     <button onclick="changeColor();">변경</button>
 
-    <script>
-        function changeColor() {
-            /*
-            const selectColor = document.getElementById("selectColor");
-			const div1 = document.getElementById("div1");
-			div1.style.backgroundColor = selectColor.value;
-            */
+    <hr>
 
-            // 위의코드를 한줄로 줄인다면 >>
-			// document.getElementById("div1").style.backgroundColor = document.getElementById("selectColor").value;
+    <h2>문제2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h2>
 
-            area1.style.backgroundColor = color.value;
-            
-        }
-    </script>
-
-  
-
-    <h1>문제2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h1>
-    
-    <!-- 내가 푼 방법
     <div id="area2"></div>
     <button onclick="changeSize1();">50x50</button>
     <button onclick="changeSize2();">원본(100x100)</button>
     <button onclick="changeSize3();">200x200</button>
-    
-    
+
     <script>
-        // 전역변수로 div요소 가져다 두기 (어떤 함수든 다 사용할 수 있음)
+        function changeColor() {
+
+            // let rgb = document.getElementById("color").value;
+            // const area1 = document.getElementById("area1");
+            // area1.style.backgroundColor = rgb;
+
+            document.getElementById("area1").style.backgroundColor = document.getElementById("color").value;
+
+        }
+
         const area2 = document.getElementById("area2");
 
         function changeSize1() {
@@ -67,21 +58,22 @@
             area2.style.width="200px";
             area2.style.height="200px";
         }
-    </script> -->
-   
 
+    </script>
+
+    <!-- 다른 방법
     <div id="area2"></div>
     <button onclick="changeSize(50);">50x50</button>
     <button onclick="changeSize(100);">원본(100x100)</button>
     <button onclick="changeSize(200);">200x200</button>
-   
+
     <script>
         function changeSize(num) {
             const area2 = document.getElementById("area2");
             area2.style.width = num + "px";
             area2.style.height = num + "px";
         }
-    </script>
+    </script> -->
 
 </body>
 </html>

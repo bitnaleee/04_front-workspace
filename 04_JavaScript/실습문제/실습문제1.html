@@ -5,40 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>실습문제1</title>
+    <style>
+        /* 
+        document.write() 통해서 해당 테이블 출력하면 
+        기존에 html 문서에 작성된거 싹 날라가고 출력되기 때문에
+        내가 아무리 style 태그로 스타일 작성해놨다고 해도
+        document.write 함수 호출 되는 순간 싹 사라질거임 (style태그도 싹 사라짐)
+        따라서 style태그로 작성해 놓은 css 적용 안됨 
+        해결방법 --> td요소 자체에 width, height 속성으로 작성하면 됨
+        */
+    </style>
 </head>
 <body>
 
-    <h1>행 열 갯수 각각 입력받아 테이블 만들기</h1>
+    <h2>행 열 갯수 각각 입력받아 테이블 만들기</h2>
 
     <button onclick="table();">테이블 생성</button>
-
+    
     <script>
         function table() {
+            
             let row = prompt("테이블 행의 갯수는?");
             let col = prompt("테이블 열의 갯수는?");
 
             let count = 1;
-
-            let table = "<table border='1'>"
+            let str = "<table border='1'>";
             for(let i=0; i<row; i++) {
-                table += "<tr>";
-                for(let j=0; j<col; j++) {
-                    table += "<td width='50' height='50'>" + count++ + "</td>";
-                    } 
-                table += "</tr>";
+                str += "<tr>";
+                    for(let j=0; j<col; j++) {
+                        str += "<td width='50' height='50'>" + count++ + "</td>";
+                    }
+                str += "</tr>";
             }
-            table += "</table>";
 
-            document.write(table);
-            /*
-                document.write()를 통해서 테이블을 출력하면 기존에 html 문서에 작성된거 날라가고 출력되기 때문에
-                style 태그에 작성된거 출력 되지않음 td요소 자체에 width, height속성으로 작성
-            */
+            str += "</table>";
+
+            document.write(str);
+
         }
     </script>
+
 
     
 </body>
 </html>
-
-
