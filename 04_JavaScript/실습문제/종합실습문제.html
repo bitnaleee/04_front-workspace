@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종합실습문제</title>
+</head>
+<body>
+
+    <h4>
+        1. 실행 버튼 클릭시 사용자에게 알람창(prompt)으로 "메세지를 입력하세요." 문구를 출력해주고 <br>
+        이때 입력받은 내용이 div#test1에 출력될 수 있도록 하시오. <br>
+        단, 사용자에게 입력받은 값이 없을 경우 "메세지가 입력되지 않았습니다." 가 출력될 수 있도록 하시오. <br>
+    </h4>
+
+    <button onclick="test1();">실행</button>
+    <div id="test1"></div>
+
+    <script>
+        function test1() {
+
+            let text = prompt("메세지를 입력하세요.");
+            
+            // if(text == null || text == "") {
+            //     document.getElementById("test1").innerHTML = "메세지가 입력되지 않았습니다.";
+            // } else {
+            //     document.getElementById("test1").innerHTML = text;
+            // }
+
+            if(!text) {
+                text = "메세지가 입력되지 않았습니다.";
+            }
+
+            document.getElementById("test1").innerHTML = text;
+            
+        }
+
+        /*
+            let inputData = prompt("메세지를 입력하세요"); // 아무것도 입력하지 않고 확인지 빈문자열, 취소버튼클릭시 null
+
+            //if(inputData == "" || inputData == null){
+            if(!inputData){ // 자바스크립트에서는 조건식에 변수를 쓰면 해당 값이 빈문자열이거나 null이 아닐 경우 (즉, 값이 있을 경우) true를 반환해줌
+                            // 따라서 해당 값이 있는지에 대한 조건검사시 변수만 작성할 때도 많다. 
+                inputData = "메세지가 입력되지 않았습니다."
+            }    
+            
+            document.getElementById("test1").innerHTML = inputData;
+
+        */
+    </script>
+
+    <hr>
+
+    <h4>
+        2. 실행 버튼 클릭시 사용자에게 알람창(confirm)으로 "개인정보활용에 동의하시겠습니까?"를 출력해주고 <br>
+        확인을 누르면 "당신의 개인정보가 유출되었습니다", 취소를 누르면 "당신의 개인정보 유출을 막았습니다." 라는 <br>
+        메세지가 div#test2에 출력될 수 있도록 하시오. <br>
+    </h4>
+
+    <button onclick="test2();">실행</button>
+    <div id="test2"></div>
+
+    <script>
+
+        function test2() {
+
+            // let text2 = confirm("개인정보활용에 동의하시겠습니까?");
+
+            // if(text2) {
+            //     document.getElementById("test2").innerHTML = "당신의 개인정보가 유출되었습니다.";
+            // } else {
+            //     document.getElementById("test2").innerHTML = "당신의 개인정보 유출을 막았습니다.";
+            // } 
+            
+            let text2 = confirm("개인정보활용에 동의하시겠습니까?") ? "당신의 개인정보가 유출되었습니다" : "당신의 개인정보 유출을 막았습니다";
+            
+            document.getElementById("test2").innerHTML = text2;
+
+        }
+
+        /*
+            삼항연산자 이용하기 
+            let msg = confirm("개인정보활용에 동의하시겠습니까?") ? "당신의 개인정보가 유출되었습니다" : "당신의 개인정보 유출을 막았습니다";
+            
+            document.getElementById("test2").innerHTML = msg;
+
+        */
+        
+    </script>
+
+    <hr>
+
+    <h4>
+        3. 실행 버튼 클릭시 10개의 랜덤(1~100)값을 발생시켜 해당 랜덤값을 담은 배열을 만들고 <br>
+        해당 배열을 내림차순 정렬 한 후 해당 숫자들이 div#test3>ul 안에 총 10개의 li 요소로 출력될 수 있도록 하시오. <br>
+    </h4>
+
+    <button onclick="test3();">실행</button>
+    <div id="test3">
+        <ul></ul>
+    </div>
+
+    <script>
+
+        function test3() {
+
+            let numbers = [];
+            for(let i=0; i<10; i++){
+                numbers.push(parseInt(Math.random()*(100-1+1) + 1));
+            }
+
+            numbers.sort(function(left, right){
+                return right-left;
+            });
+
+            for(let i=0; i<numbers.length; i++){
+                document.querySelector("div#test3>ul").innerHTML += "<li>" + numbers[i] + "</li>";
+            }
+
+            /*
+                반복문 대신에 배열의 각 인덱스의 값에 순차적으로 접근해주는 forEach 함수같은걸 쓸 수도 있음! 
+                numbers.forEach(function(item){ // 매개변수를 써두면 매번 각인덱스에 순차적으로 접근된 값이 담김! 
+                document.querySelector("div#test3>ul").innerHTML += "<li>" + item + "</li>";
+            */
+            
+        }
+    </script>
+
+    <hr>
+
+    <h4>
+        4. input[type=text name=img]인 요소에 화면에 출력하고자 하는 이미지의 경로를 입력받고 <br>
+        출력 버튼 클릭하면 div.img-container 요소 내에 사용자가 입력한 주소의 img가 200X200크기로 출력될 수 있도록 하시오. <br>
+    </h4>
+
+    <input type="text" name="img">
+    <button onclick="test4();">출력</button>
+    <div class="img-container"></div>
+
+    <script>
+
+        function test4() {
+            
+            // 동적인 요소를 문자열로 만드는 방법
+            let route = document.getElementsByName("img")[0].value;
+            document.getElementsByClassName("img-container")[0].innerHTML = "<img src='" + route + "' width='200' height='200'>";
+
+            /*
+            동적인 요소를 dom요소객체로 만드는 방법
+            const imgEl = document.createElement("img"); // 태그
+            imgEl.src = document.getElementsByName("img")[0].value; // 문구
+            imgEl.width = "200";
+            imgEl.height = "200";
+
+            document.getElementsByClassName("img-container")[0].appendChild(imgEl);
+
+            */
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>
+        5. 아래 태그의 데이터를 확인하기 버튼을 클릭하면 모두 가져와 3글자 이상인 데이터만 div#checkStr에 출력하기 <br>
+    </h4>
+
+    <div class="data-container">
+        <p>가나다라</p>
+        <p>abcde</p>
+        <h3>썬칩</h3>
+        <h4>홈런볼</h4>
+        <span>초코칩쿠키</span>
+        <p>칸쵸</p>
+        <h4>초코파이</h4>
+        <h2>칙촉</h2>
+    </div>
+
+    <button onclick="test5();">확인하기</button>
+    <div id="checkStr"></div>
+
+    <script>
+
+        function test5() {
+
+            const data = document.querySelectorAll(".data-container>*");
+            const containerDiv = document.getElementById("checkStr");
+            for(let i=0; i<data.length; i++){
+                if(data[i].innerHTML.length >= 3){
+                    
+                    //containerDiv.innerHTML += data[i].innerHTML + " "; // 단순히 3글자 이상인 문자열만 출력하기(HTML적용X)
+                    //containerDiv.appendChild(data[i]); // 요소객체 자체를 div에 출력하기 => 기존께 이동되버림
+
+                    // 기존꺼를 그대로 유지하면서 div에 출력하고자 할 경우 요소를 복제한 후에 출력해야됨
+                    // 요소복제 메소드 - 복제할요소객체.cloneNode(논리값) : 복제된요소객체
+                    //                  이때 논리값으로 false 제시시 elementNode만 복제
+                    //                                  true 제시시 elementNode와 textNode모두 복제
+                    let copy = data[i].cloneNode(true);
+                    containerDiv.appendChild(copy);
+                }
+            }
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>
+        6. 아래의 input[type=number] 두개는 숫자를, select>option 요소는 연산하고자 하는 연산자를 입력받기 위한 것이다. <br>
+        실행 버튼 클릭시 사용자가 입력한 값들을 가지고 그에 맞는 적절한 연산 후 div#calc-result에 결과가 출력될 수 있도록 하시오. <br>
+    </h4>
+
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+    <select name="oper" id="oper">
+        <option value="+" class="operater">+</option>
+        <option value="-" class="operater">-</option>
+        <option value="*" class="operater">*</option>
+        <option value="/" class="operater">/</option>
+    </select>
+    <button onclick="test6();">실행</button>
+    <div id="test6"></div>
+
+    <script>
+
+        function test6() {
+
+            let num1 = document.getElementById("num1").value;
+            let num2 = document.getElementById("num2").value;
+            let oper = document.getElementById("oper").value;
+
+            // let result = 0;
+            // switch(oper){
+            //     case "+": result = Number(num1)+Number(num2); break;
+            //     case "-": result = num1-num2; break;
+            //     case "*": result = num1*num2; break;
+            //     case "/": result = num1/num2; break;
+            // }
+
+            let result = eval(num1 + oper + num2);
+           // eval 함수는 문자열을 자바스크립트 코드로 변환해서 실행시켜주는 함수
+           // 예를들면 eval("2*3") 이렇게 된다면 실제로 2*3이 연산되서 실행
+
+            document.getElementById("test6").innerHTML = result;
+
+        }
+        
+    </script>
+
+    <hr>
+
+    <h4>
+        7. div.img-container 안에 원하는 이미지를 100X100 사이지로 한개 출력하고 <br>
+        그 사진을 클릭할 때마다 이미지의 가로 세로 10px씩 증가되게끔 구현하시오. <br>
+    </h4>
+
+    <div class="img-container">
+        <img src="C:\Users\lbn06\Desktop\minji.png" width="100" height="100" id="img">
+    </div>
+
+    <script>
+
+        document.getElementById("img").onclick = function(){
+            this.height += 10;
+            this.width += 10;
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>
+        8. 추가 버튼 클릭시마다 input[type=text]인 요소가 div.input-container에 추가될 수 있도록 구현하시오. <br>
+        단, 최대 10개까지만 추가될 수 있도록 하시오. <br>
+        (10개를 초과하려는 순간 "10개까지만 추가 가능합니다"와 같은 알람창 출력)
+    </h4>
+
+    <button onclick="test8();">추가</button>
+    <div class="input-container"></div>
+
+    <script>
+
+        let count = 0;
+        function test8() {
+
+            const input = document.createElement("input");
+            const enter = "<br>";
+
+            if(count < 10){
+                document.getElementsByClassName("input-container")[0].appendChild(input);
+                document.querySelector("div.input-container").innerHTML += enter;
+                count++;
+            } else {
+                alert("10개까지만 추가 가능합니다");
+            }
+
+        }
+
+        /*
+            let count = 0;
+            function test8(){
+                const inputEl = "<input type='text'>";
+                if(count < 10){
+                    document.querySelector("div.input-container").innerHTML += inputEl + "<br>";
+                    count++;
+                }else{
+                    alert("10개까지만 추가 가능합니다.");
+                }
+            }
+        */
+
+    </script>
+
+    <hr>
+
+    <h4>
+        9. 출력 버튼을 클릭시 아래 객체에 저장된 데이터(속성,속성값)의 내용을 ul안에 li요소로 출력되게 하시오. <br>
+        {name:"김민지", age:23, height:170.5, weight:50.7, addr:"서울시 마포구", birthDay:2000/09/18} <br>
+    </h4>
+
+    <div class="list-data">
+        <button onclick="test9();">출력</button>
+        <ul></ul>
+    </div>
+
+    <script>
+
+        function test9() {
+
+            const data = {
+                name:"김민지",
+                age:23,
+                height:170.5,
+                weight:50.7,
+                addr:"서울시 마포구",
+                birthDay:new Date(2000, 8, 18)
+            };
+
+            const ulEl = document.querySelector("div.list-data>ul");
+            for(let key in data){
+                ulEl.innerHTML += "<li>" + key + " : " + data[key] + "</li>";
+            }
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>
+        10. 출력하기 버튼 클릭시 아래의 객체배열로 저장된 데이터를 div#data-table영역안에 table요소를 만들어서 출력하시오. <br>
+        [{no:1,title:"첫번째",writer:"유저1",enrolldate:오늘날짜} <br>
+        {no:2,title:"두번째",writer:"유저2",enrolldate:오늘날짜} <br>
+        {no:3,title:"세번째",writer:"유저3",enrolldate:오늘날짜} <br>
+        {no:4,title:"네번째",writer:"유저4",enrolldate:오늘날짜}] <br>
+        * 이때 위의 객체배열을 전역변수로 만들어 둘 것 * <br>
+    </h4>
+
+    <button onclick="test10();">출력하기</button>
+    <div id="data-table"></div>
+
+    <script>
+
+        // 생성자 함수 만들어두기
+        function Board(no, title, writer, enrolldate){
+            this.no = no;
+            this.title = title;
+            this.writer = writer;
+            this.enrolldate = enrolldate ? enrolldate : new Date(); // 전달값이 있을 경우 전달값으로, 없을 경우 오늘날짜로 들어가게끔
+        }
+
+        // 전역변수로 객체배열 만들어 두기
+        const boardList = [new Board(1, "첫번째", "유저1"), 
+                           new Board(2, "두번째", "유저2"),
+                           new Board(3, "세번째", "유저3"),
+                           new Board(4, "네번째", "유저4")];
+
+        function test10(){
+            
+            const divEl = document.getElementById("data-table");
+
+            let tableEl = document.createElement("table");
+            tableEl.border = "1";
+
+            boardList.forEach(function(boardObj){
+
+                let trEl = document.createElement("tr");
+                for(let key in boardObj){
+                    let tdEl = document.createElement("td");
+                    tdEl.appendChild(document.createTextNode(boardObj[key]));
+                    trEl.appendChild(tdEl);
+                }
+                tableEl.appendChild(trEl);
+            });
+
+            divEl.appendChild(tableEl);
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>
+        11. 아래의 input태그들을 이용해서 사용자로부터 글번호, 제목, 작성자명, 작성일을 입력받고 <br>
+        추가 버튼 클릭시 위 10번 문제에서 세팅해둔 전역 객체배열에 추가한 후 table에도 한 행 추가 되는 기능을 구현하시오. <br>
+        (테스트시 10번 실행 후 11번 실행하기) <br>
+    </h4>
+
+    글번호 : <input type="number" id="boardNo"> <br>
+    제목 : <input type="text" id="boardTitle"> <br>
+    작성자 : <input type="text" id="boardWriter"> <br>
+    작성일 : <input type="date" id="boardDate"> <br>
+
+    <button onclick="test11();">추가</button>
+
+    <script>
+        function test11() {
+            let boardNo = Number(document.getElementById("boardNo").value);
+            let boardTitle = document.getElementById("boardTitle").value;
+            let boardWriter = document.getElementById("boardWriter").value;
+            let boardDateArr = document.getElementById("boardDate").value.split("-");
+            let boardDate = new Date(boardDateArr[0], boardDateArr[1]-1, boardDateArr[2]);
+
+            let boardObj = new Board(boardNo, boardTitle, boardWriter, boardDate);
+
+            boardList.push(boardObj);
+
+            console.log(boardList);
+
+                const tableEl = document.querySelector("div#data-table>table");
+
+                let trEl = document.createElement("tr");
+                for(let key in boardObj){
+                    let tdEl = document.createElement("td");
+                    tdEl.appendChild(document.createTextNode(boardObj[key]));
+                    trEl.appendChild(tdEl);
+                }
+
+                tableEl.appendChild(trEl);
+
+        }
+    </script>
+
+    <hr>
+
+    <h4>12. 아래의 텍스트 상자에서 사용자가 입력할 때마다 현재 입력된 글자와 글자수를 div#text-container에 출력되게끔 구현하시오.</h4>
+
+    <input type="text" id="inputText" onkeyup="test12();">
+    <div id="text-container"></div>
+
+    <script>
+        function test12() {
+            const inputEl = window.event.target;
+            document.getElementById("text-container").innerHTML = "글자 : " + inputEl.value + "<br>글자수 : " + inputEl.value.length;
+        }
+    </script>
+
+    <hr>
+
+    <h4>
+        13. 아래의 텍스트 상자를 이용해서 사용자에게 비밀번호를 두번 입력 받는다. <br>
+        이 때 비밀번호와 비밀번호 확인 텍스트상자에 사용자가 입력할 때마다 두 개의 입력된 비밀번호를 비교해서 <br>
+        두 개가 일치하면 초록색 문구로 "일치합니다.", 일치하지 않으면 빨강색으로 "일치하지 않습니다." 문구를 <br>
+        span#pwd-result에 출력하시오. <br>
+    </h4>
+
+    비밀번호 : <input type="text" id="pwd" onkeyup="test13();">
+    비밀번호 확인 : <input type="text" id="pwd2" onkeyup="test13();">
+    <span id="result13"></span>
+
+    <script>
+        function test13() {
+
+            let spanEl = document.getElementById("result13");
+
+            let pwd = document.getElementById("pwd").value;
+            let pwd2 = document.getElementById("pwd2").value;
+
+            if(pwd == pwd2){
+                spanEl.innerHTML = "일치합니다.";
+                spanEl.style.color = "green";
+            } else {
+                spanEl.innerHTML = "일치하지 않습니다.";
+                spanEl.style.color = "red";
+            }
+
+        }
+    </script>
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>
