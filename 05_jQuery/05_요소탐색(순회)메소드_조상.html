@@ -60,14 +60,13 @@
             $("span").parent().css({color:"red", border:"2px solid red"});
 
             // parents()
-            $("li").parents().css("color", "blue");
+            $("li").parents().css("color", "blue"); // body까지 적용
 
             // parents("선택자")
-            $("li").parents("div").css("border", "2px dashed magenta");
+            $("li").parents("div").css("border", "2px dashed pink");
             
             // parentsUntil("선택자")
-            $("span").parentsUntil("div").css("color", "pink");
-
+            $("span").parentsUntil("div").css("color", "pink"); // div는 포함안됨
         })
     </script>
 

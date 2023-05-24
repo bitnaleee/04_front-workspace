@@ -31,7 +31,7 @@
         $(function(){
             //const tmp = document.getElementById("test1").innerHTML;
             const tmp = $("#test1").html();
-            console.log(tmp); // "<a>네이버로</a>"
+            console.log(tmp); // "<a>네이버로</a>" => 태그포함 문자열
 
             //document.getElementById("test2").innerHTML = "변경할문자열";
             $("#test2").html(tmp);
@@ -58,7 +58,7 @@
     <script>
         $(function(){
             const tmp = $("#test3").text();
-            console.log(tmp); // "구글로"
+            console.log(tmp); // "구글로" => 문자열
 
             $("#test4").text("<a>" + tmp + "</a>");
         })
@@ -93,9 +93,7 @@
             $(".test").html(function(index, html){
                 return "<h1>인덱스 : " + index + ", content내용 : " + html + "</h1>";
             })
-
-
-
+            
         })
     </script>
 
