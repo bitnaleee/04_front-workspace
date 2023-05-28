@@ -21,14 +21,14 @@
 
     <br><br>
 
-    <img id="newyork" src="resources/image/city3.jpg">
+    <img id="newyork" src="resources/image/city3.jpg" style="width:300px; height:200px;">
 
-    <div id="area" style="width:100px; height:100px; background:pink"></div>
+    <div id="area" style="width:50px; height:50px; background:pink"></div>
 
     <script>
         $(function() {
             $("#hide").click(function() {
-                $("#newyork").hide(3000);
+                $("#newyork").hide(3000); // 시간지정 
                 $("#area").hide(3000);
             })
 
@@ -36,13 +36,9 @@
                 $("#newyork").show(3000);
             })
 
-            $("#toggle").click(function() {
+            $("#toggle").click(function() { // hide & show
                 $("#newyork").toggle(2000);
             })
-
-            
-
-
 
         })
     </script>

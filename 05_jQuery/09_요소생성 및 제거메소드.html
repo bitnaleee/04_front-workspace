@@ -32,9 +32,7 @@
 
     <button id="btn">요소생성</button>
 
-    <div id="area1">
-
-    </div>
+    <div id="area1"></div>
 
     <script>
         $(function() {
@@ -95,21 +93,23 @@
     <h1 id="test4">
         <span>A</span>
     </h1>
+
+    <!-- (h1#test$>span{A})*4 -->
     
     <script>
         $(function() {
-            /* part1
+            //part1
             $("#test1").append("<span class='added'>B</span>");
             $("#test2").prepend("<span class='added'>B</span>");
             $("#test3").before("<span class='added'>B</span>");
             $("#test4").after("<span class='added'>B</span>");
-            */
+            
 
             // part2
-            $("<span class='added'>B</span>").appendTo("#test1");
-            $("<span class='added'>B</span>").prependTo("#test2");
-            $("<span class='added'>B</span>").insertBefore("#test3");
-            $("<span class='added'>B</span>").insertAfter("#test4");
+            // $("<span class='added'>B</span>").appendTo("#test1");
+            // $("<span class='added'>B</span>").prependTo("#test2");
+            // $("<span class='added'>B</span>").insertBefore("#test3");
+            // $("<span class='added'>B</span>").insertAfter("#test4");
 
         })
     </script>
@@ -134,9 +134,7 @@
 
     <button id="clone">복제</button>
 
-    <div id="clone-result">
-
-    </div>
+    <div id="clone-result"></div>
     
     <script>
         $(function() {
@@ -188,14 +186,12 @@
     <button id="remove">잘라내기1</button>
     <button id="detach">잘라내기2</button>
 
-    <div id="remove-result">
-
-    </div>
+    <div id="remove-result"></div>
     
     <script>
         $(function() {
             $("#empty").click(function() {
-                // $("#item2").empty(); 하위요소만 제거 안녕만 제거
+                // $("#item2").empty(); 하위요소만 제거 안녕만 제거 (제거할 요소의 상위요소 선택해야함)
                 $("#remove-test").empty();
             })
 

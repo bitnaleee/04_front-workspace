@@ -8,11 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <style>
         div {
-            background:rgb(253, 250, 250);
+            background:rgb(255, 227, 232);
             border:1px solid pink;
             width:300px;
             height:30px;
-            line-height:30px;
+            line-height:30px; /*height값과 똑같이 쓰면 가운데 정렬*/
             text-align:center;
             border-radius:10px;
             cursor:pointer;
@@ -24,7 +24,7 @@
             height:100px;
             margin-top:5px;
             padding:10px;
-            box-sizing:border-box;
+            box-sizing:border-box; /*테두리까지 포함한 길이*/
             border-radius:10px;
             display:none;
         }
@@ -58,20 +58,16 @@
 
                 const $p = $(this).next(); // jQuery 방식으로 선택된 요소를 담아둘 때 변수명 앞에 $
 
-                if($p.css("display") == "none") { // css 값을 변경하기도 하지만 반환하기도 함
+                if($p.css("display") == "none") {  // 사라져 있는 상태일 경우
+                    // css 값을 변경하기도 하지만 반환하기도 함
                     
                     // 기존에 열려있는 모든 p 요소를 사라지게끔
                     $(this).siblings("p").slideUp();
-                    
                     $p.slideDown(); // 보여지게끔
-
                 } else {
-
                     $p.slideUp(); // 사라지게끔
-
                 }
                 
-
             })
         })
     </script>

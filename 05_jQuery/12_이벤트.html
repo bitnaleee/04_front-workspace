@@ -26,10 +26,10 @@
             })
 
             $("#test1").click(function() {
-                $(this).css("background", "yellow");
+                $(this).css("background", "yellow"); // 이벤트 중첩될 수 있음
             })
 
-            $("#test1").dblclick(function() {
+            $("#test1").dblclick(function() { // 더블클릭시
                 $(this).css("color", "pink");
             })
         })
@@ -60,7 +60,7 @@
 
             // on메소드 사용시
             // 한 요소에 다중으로 이벤트 걸기 가능
-            $("#test2").on({mouseenter:function(){
+            $("#test2").on({mouseenter:function(){ // 객체로 만들어서 연결
                 $(this).css("background", "lightskyblue").text("마우스 올라감");
             }, mouseout:function(){
                 $(this).css("background", "pink").text("마우스 빠져나감");
@@ -96,11 +96,11 @@
             })
             */
             
-            $("#wrap").on("click", "h4", "h5", function() {
+            $("#wrap").on("click", "h4", "h5", function() { // #wrap요소안에 있는 h4, h5
                 $(this).html("안녕");
             })
             
-            $(document).on("click", "h5", function() {
+            $(document).on("click", "h5", function() { // 문서안에 있는 h5
                 $(this).css("color", "blue");
             })
 
@@ -112,11 +112,12 @@
 
     <div id="wrap2" style="border:1px solid red">
         <h6>기존에 존재하는 h6요소</h6>
+
     </div>
 
     <script>
         $(function() {
-            // 방법1. 이벤트메소드 => 동적으로 만들어진 요소에 이벤트 적용 안됨
+            // 방법1. 이벤트메소드 => 동적으로 만들어진 요소에 이벤트 적용 안됨(처음에 있던 h6에만 적용)
             /*
             $("#wrap2>h6").click(function() {
                 $("#wrap2").append("<h6>클릭으로 인해 동적으로 만들어진 h6요소</h6>");

@@ -76,6 +76,7 @@
 
             // --------------------------------------------------------
 
+            // 아래 학생조회 script
             $("#btn").click(function() {
                 // db로부터 조회했다는 가정하에 (ajax)
                 // ArrayList<Student>
@@ -94,7 +95,6 @@
                 
                 $("#area1>tbody").html(result);
 
-
             })
 
         })
@@ -111,7 +111,6 @@
             </tr>
         </thead>
         <tbody>
-
         </tbody>
     </table>
 
@@ -176,7 +175,7 @@
             // 해당 h3요소에 test클래스가 존재한다면 배경색 변경
             $("h3").each(function() {
                 if($(this).is(".test")) {
-                    $(this).css("background", "orange");
+                    $(this).css("background", "lightblue");
                 }
             })
         })
